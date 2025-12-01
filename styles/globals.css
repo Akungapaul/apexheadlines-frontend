@@ -1,0 +1,197 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100;
+  }
+
+  /* Prevent theme flash */
+  html.dark {
+    color-scheme: dark;
+  }
+}
+
+@layer components {
+  /* Custom scrollbar */
+  .custom-scrollbar::-webkit-scrollbar {
+    @apply w-2 h-2;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-gray-100 dark:bg-gray-800;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-gray-400 dark:bg-gray-600 rounded-full;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-500 dark:bg-gray-500;
+  }
+}
+
+@layer utilities {
+  /* Line clamp utilities for text truncation */
+  .line-clamp-1 {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* Focus visible */
+  .focus-visible-ring {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-gray-900;
+  }
+}
+
+/* ============================================
+   CORMORANT FONT - APPLIED TO ENTIRE WEBSITE
+   These rules are OUTSIDE @layer to override Tailwind utilities
+   ============================================ */
+
+/* Force Cormorant on ALL elements */
+html, body {
+  font-family: var(--font-cormorant), Cormorant, Georgia, 'Times New Roman', serif !important;
+}
+
+/* Force Cormorant Garamond on headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-cormorant-garamond), 'Cormorant Garamond', Garamond, Georgia, serif !important;
+}
+
+/* Universal selector to catch everything */
+*, *::before, *::after {
+  font-family: var(--font-cormorant), Cormorant, Georgia, 'Times New Roman', serif !important;
+}
+
+/* Re-apply Cormorant Garamond to headings after universal selector */
+h1, h2, h3, h4, h5, h6,
+.text-2xl, .text-3xl, .text-4xl, .text-5xl {
+  font-family: var(--font-cormorant-garamond), 'Cormorant Garamond', Garamond, Georgia, serif !important;
+}
+
+/* Override Tailwind's font-sans class */
+.font-sans {
+  font-family: var(--font-cormorant), Cormorant, Georgia, 'Times New Roman', serif !important;
+}
+
+/* Override font-serif and font-mono too */
+.font-serif, .font-mono {
+  font-family: var(--font-cormorant), Cormorant, Georgia, 'Times New Roman', serif !important;
+}
+
+/* Explicit overrides for common elements */
+nav, nav a, nav span,
+header, header a, header span,
+footer, footer a, footer span,
+button, .btn,
+input, textarea, select,
+p, span, a, div, li, td, th, label,
+article, section, aside,
+.text-sm, .text-xs, .text-base, .text-lg, .text-xl {
+  font-family: var(--font-cormorant), Cormorant, Georgia, 'Times New Roman', serif !important;
+}
+
+/* Prose styles */
+.prose, .prose-lg, .prose-dark {
+  font-family: var(--font-cormorant), Cormorant, Georgia, 'Times New Roman', serif !important;
+}
+
+.prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6,
+.prose-lg h1, .prose-lg h2, .prose-lg h3, .prose-lg h4,
+.prose-dark h1, .prose-dark h2, .prose-dark h3, .prose-dark h4 {
+  font-family: var(--font-cormorant-garamond), 'Cormorant Garamond', Garamond, Georgia, serif !important;
+}
+
+/* Prose dark mode styles */
+.prose-dark {
+  @apply text-gray-300;
+}
+
+.prose-dark h1,
+.prose-dark h2,
+.prose-dark h3,
+.prose-dark h4,
+.prose-dark h5,
+.prose-dark h6 {
+  @apply text-gray-100;
+}
+
+.prose-dark a {
+  @apply text-primary-400;
+}
+
+.prose-dark a:hover {
+  @apply text-primary-300;
+}
+
+.prose-dark strong {
+  @apply text-gray-100;
+}
+
+.prose-dark code {
+  @apply text-gray-100 bg-gray-800;
+}
+
+.prose-dark pre {
+  @apply bg-gray-800;
+}
+
+.prose-dark blockquote {
+  @apply border-gray-600 text-gray-400;
+}
+
+/* Loading animation */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite linear;
+  background: linear-gradient(
+    to right,
+    #f6f7f8 0%,
+    #edeef1 20%,
+    #f6f7f8 40%,
+    #f6f7f8 100%
+  );
+  background-size: 1000px 100%;
+}
+
+/* Dark mode shimmer */
+.dark .animate-shimmer {
+  background: linear-gradient(
+    to right,
+    #374151 0%,
+    #4b5563 20%,
+    #374151 40%,
+    #374151 100%
+  );
+  background-size: 1000px 100%;
+}
