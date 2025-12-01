@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { GetServerSideProps } from 'next';
 import { MainLayout } from '@/layouts/MainLayout';
 import { ArticleCard } from '@/components/ArticleCard';
@@ -7,7 +7,7 @@ import { articlesAPI } from '@/api/articles';
 import { categoriesAPI } from '@/api/categories';
 import { defaultCategories } from '@/data/categories';
 import { getArticlesByCategory } from '@/data/articles';
-import type { Article, Category, PaginatedResponse } from '@/types';
+import type { Article, Category } from '@/types';
 
 interface CategoryPageProps {
   category: Category;

@@ -3,7 +3,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { formatDate, formatReadingTime } from '@/utils/formatters';
 import type { Article } from '@/types';
-import clsx from 'clsx';
 
 interface ArticleCardProps {
   article: Article;

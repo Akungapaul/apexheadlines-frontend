@@ -29,7 +29,7 @@ export const NewsletterSignup: React.FC = () => {
         setStatus('idle');
         setMessage('');
       }, 5000);
-    } catch (error) {
+    } catch {
       setStatus('error');
       setMessage('Failed to subscribe. Please try again.');
     }
